@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <title>Users</title>
+</head>
+<body>
+
+
+<div class="insert">
+    <button id="btnCreate" type="button" class="btn btn-primary" data-bs-toggle="modal" >Create</button>
+<table id="tableUsers" class="table mt-2 table-bordered table-striped">
+<thead>
+<tr class="text-center">
+    <th> id </th>
+    <th> firstname </th>
+    <th> lastname </th>
+    <th> age </th>
+    <th> email </th>
+    <th> role </th>
+      </tr>
+     </thead>
+    <tbody>
+
+    </tbody>
+</table>
+</div>
+
+
+
+
+    <div id="modalElement" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="firstname" class="d-flex justify-content-center font-weight-bold">firstName</label>
+                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname" class="d-flex justify-content-center font-weight-bold">lastname</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter lastname">
+                    </div>
+                    <div class="form-group">
+                        <label for="age" class="d-flex justify-content-center font-weight-bold">age</label>
+                        <input type="number" class="form-control" id="age" name="age" placeholder="Enter age">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="d-flex justify-content-center font-weight-bold">email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="d-flex justify-content-center font-weight-bold">password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role" class="d-flex justify-content-center font-weight-bold">role</label>
+                        <select multiple class="form-control" size="2" id="role" name="role" placeholder="Enter role">
+                            <option
+                                    th:each="role : ${allRoles}"
+                                    th:text="${role.role}"
+                                    th:value="${role.id}"
+                                    th:selected="${user.roles.contains(role)}">
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js" ></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
